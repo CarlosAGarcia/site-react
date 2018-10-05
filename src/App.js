@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {createStore} from 'redux';
 
 class App extends Component {
   render() {
+    
+    //reducer counter takes past state, action and gives new state
+    //never touch this const or aloter it
+    const counter = (state = 0, action) => {
+      switch (action.type){
+        case 'INCREASE' :
+          return state+1;
+        case 'DECREASE' :
+          return state-1;
+        default:
+          return state;
+      }
+    }
+
+    const store = createStore(counter);
+    console.log("state is "+store.getState());
+
+    store.dispatch({type:'INCREASE'});
+    console.log("state is "+store.getState());
+
+    const render2 = ()=> store.getState();
+     store.subscribe(render2);
+     
+     document.addEventListener('click', ()=>{store.dispatch({type: 'INCREASE'})});
+    
+
     return (
+
+      
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {render2}
+
       </div>
     );
   }
