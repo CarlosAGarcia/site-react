@@ -22,6 +22,7 @@ import registerServiceWorker from './registerServiceWorker';
 
     //dumb component, doesnt need to know anything
     const Counter = props => {
+        
     console.log(props);
     return(
     <div>
