@@ -22,7 +22,7 @@ import registerServiceWorker from './registerServiceWorker';
 
     //dumb component, doesnt need to know anything
     const Counter = props => {
-        
+
     console.log(props);
     return(
     <div>
@@ -32,7 +32,7 @@ import registerServiceWorker from './registerServiceWorker';
     </div>
 )}
 
-const render = () => {
+
     ReactDOM.render(
     <Counter 
         value = {store.getState()}
@@ -41,6 +41,5 @@ const render = () => {
     />, 
         document.getElementById('root')
     );
-};
+
 registerServiceWorker();
-render();
